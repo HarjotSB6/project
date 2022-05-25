@@ -1,0 +1,135 @@
+<!--   Template Inheritance Concept
+ the nav bar in home page we want it every where
+will be used by every page
+ -->
+
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <!-- Bootstrap CSS -->
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+         integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <title> {% block title %} {% endblock title %} Arterest</title>
+      {% block head %} {% endblock head %}
+      <style>
+        body{
+          background-color: gray;
+        }
+        .footer{
+                 color: white;
+                 height: 500px;
+                 background-color: black;
+                 font-size: 30px;
+                 font-weight: 300;
+                 background-color: #000000;
+                 height: 5vh;
+                 text-align: center;
+                 vertical-align: middle;
+                 display: flex;
+                 justify-content: center;
+                 align-items: center;
+                 padding: 40px;
+               }
+         .logo{
+           width: 70px;
+      cursor: pointer;
+      margin-right: -10px;
+      }
+      .logowritten{
+      width: 200px;
+      cursor: pointer;
+      margin-right: 20px;
+      
+      }
+</style>
+  </head>
+  <body>
+
+    <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">    <!--changing color!-->
+      <!-- <a class="navbar-brand" href="/">Arterest</a> -->
+      <img src="https://i.ibb.co/XXN1mfg/logo.png" class="logo" alt="logo">
+      <img src="https://i.ibb.co/mzTsY6H/logowritten.png" class="logowritten" alt="logowritten">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+       <span class="navbar-toggler-icon"></span>
+        </button>
+
+     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+       <li class="nav-item active">
+        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+       </li>
+        <li class="nav-item">
+        <a class="nav-link" href="/me">About Us</a>
+        </li>
+       <li class="nav-item dropdown">
+        <!--<a class="nav-link dropdown-toggle" href="/services" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Services
+        </a>-->
+        <!--<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Ice Cream</a>
+          <a class="dropdown-item" href="#">Softy</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Family Pack</a>
+        </div>-->
+        </li>
+         <li class="nav-item">
+        <!--<a class="nav-link" href="/tracker">Tracker</a>-->
+        </li>
+        <li class="nav-item">
+        <a class="nav-link" href="/contact">Contact Us</a>
+        </li>
+      </ul>
+     <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+
+       </form>
+        <button type="button" class="btn btn-outline-success mx-2 pop" id="popcart" data-trigger="click" data-container="body" data-toggle="popover" data-placement="bottom" data-html="true" data-content="Vivamus
+            sagittis lacus vel augue laoreet rutrum faucibus." style="color:white;background-color:none;">
+             Cart (<span id="cart" style="color:red;"  >0</span>)
+         </button>
+
+          <!--{% block login %}
+
+         {% endblock login %}-->
+      </div>
+
+    </nav>
+
+    <!-- Adding  Alerts -->
+
+    {% if messages %}
+    {% for message in messages %}
+     <div class="alert alert-{{ message.tags }} alert-dismissible fade show  my-0" role="alert">
+         <strong>{{ message }}</strong>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+         <span aria-hidden="true">&times;</span>
+       </button>
+      </div>
+      {% endfor %}
+     {% endif %}
+     <!-- Additional added for block i.e template inheritance -->
+    {% block body %}  {% endblock body %}
+
+    <!-- Bootstrap CSS -->
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+
+<!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <div class="footer">
+      <h5>&copy; 2021 ARTEREST All rights reserved</h5>
+     </div> 
+    {% block js%}
+
+     {% endblock %}
+  </body>
+</html>
